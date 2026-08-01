@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himanish Jindal | Software Developer</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --accent-hover: #0284c7;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --transition: all 0.3s ease;
+        }
+
+        .logo-pulse {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .status-pulse {
+            width: 10px;
+            height: 10px;
+            background-color: #22c55e;
+            /* Green status dot */
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            }
+        }
+
+        .project-link {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .project-link:hover {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            padding-bottom: 3rem;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .tagline {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Typewriter Animation Styles */
+        h1.typing-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            min-height: 4.2rem;
+        }
+
+        .typed-text {
+            color: var(--text-main);
+        }
+
+        .cursor {
+            display: inline-block;
+            background-color: var(--accent-color);
+            margin-left: 2px;
+            width: 4px;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .location {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bio {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #0f172a;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            color: #fff;
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            background: var(--card-bg);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50%;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon {
+            font-size: 2.2rem;
+            color: var(--accent-color);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Education Card */
+        .education-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .edu-details h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .edu-details p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .edu-badge {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Skills Chips */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-chip {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-chip i {
+            color: var(--accent-color);
+        }
+
+        /* Profiles Grid */
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .profile-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.8rem;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .profile-info i {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .contact-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.05rem;
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1.typing-title {
+                font-size: 2.5rem;
+                min-height: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .education-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-details {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo-pulse">
+                    <span class="status-pulse"></span>
+                    HJ<span style="color: var(--accent-color);">.</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#profiles">Profiles</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <!-- Direct PDF Link in Nav -->
+    <li><a href="Himanish_Jindal_Resume.pdf" target="_blank" style="color: var(--accent-color); font-weight: 600;"><i class="fa-solid fa-file-arrow-down"></i> Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+   <!-- Hero Section -->
+<section id="hero">
+    <div class="container">
+        <div class="hero-content">
+            <p class="tagline">Hello, I'm</p>
+            <!-- Animated Typewriter Title -->
+            <h1 class="typing-title"><span class="typed-text"></span><span class="cursor">&nbsp;</span></h1>
+            <h2 class="subtitle">Software Developer & ECE Student</h2>
+            <p class="location"><i class="fa-solid fa-location-dot"></i> Sangrur, Punjab, India</p>
+            <p class="bio">
+                Currently pursuing B.Tech in Electronics & Communication Engineering at <strong>IIIT Allahabad</strong>. Passionate about software development, Data Structures & Algorithms, and building custom software systems.
+            </p>
+            <div class="cta-buttons">
+                <!-- View Resume Button -->
+                <a href="Himanish_Jindal_Resume.pdf" target="_blank" class="btn btn-primary">
+                    <i class="fa-solid fa-file-pdf"></i> View Resume
+                </a>
+                
+                <!-- Email Button -->
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jhimanish16@gmail.com" target="_blank" class="btn btn-secondary">
+                    <i class="fa-solid fa-envelope"></i> Get In Touch
+                </a>
+                
+                <!-- Codeforces Button -->
+                <a href="https://codeforces.com/profile/jhimanish16" target="_blank" class="btn btn-secondary">
+                    <i class="fa-solid fa-code"></i> Codeforces
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+
+                <!-- C++ Music Player Project Card -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-header">
+                            <i class="fa-solid fa-music project-icon"></i>
+                            <!-- Direct GitHub Link -->
+                            <a href="https://github.com/jhimanish16/cpp-music-player" target="_blank"
+                                class="project-link" title="View Source Code on GitHub">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                        <h3 class="project-title">C++ Music Player</h3>
+                        <p class="project-desc">
+                            A console-based audio player application developed to demonstrate practical Data Structures
+                            & Algorithms implementations. Features dynamic playlist management, previous/next
+                            navigation, song queuing, and quick search.
+                        </p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">Doubly Linked List</span>
+                        <span class="tag">Queues</span>
+                        <span class="tag">Data Structures</span>
+                        <span class="tag">OOP</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-card">
+                <div class="edu-details">
+                    <h3>Indian Institute of Information Technology, Allahabad (IIIT-A)</h3>
+                    <p>Bachelor of Technology in Electronics & Communication Engineering (ECE)</p>
+                    <p><i class="fa-regular fa-calendar" style="margin-right: 5px;"></i> 2024 – 2028</p>
+                </div>
+                <div class="edu-badge">
+                    CGPA: 8.15 / 10
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-chip"><i class="fa-solid fa-terminal"></i> Data Structures & Algorithms</div>
+                <div class="skill-chip"><i class="fa-solid fa-code"></i> C++ / Java / Python</div>
+                <div class="skill-chip"><i class="fa-solid fa-laptop-code"></i> Software Development</div>
+                <div class="skill-chip"><i class="fa-brands fa-html5"></i> Web Development (HTML/CSS/JS)</div>
+                <div class="skill-chip"><i class="fa-solid fa-microchip"></i> Electronics & Hardware Basics</div>
+                <div class="skill-chip"><i class="fa-solid fa-diagram-project"></i> Problem Solving</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profiles & Platforms -->
+    <section id="profiles">
+        <div class="container">
+            <h2 class="section-title">Coding & Social Profiles</h2>
+            <div class="profiles-grid">
+                <!-- LinkedIn Card -->
+                <a href="https://www.linkedin.com/in/himanish-jindal-7967ab332" target="_blank" class="profile-card">
+                    <div class="profile-info">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Himanish Jindal</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+
+                <!-- Codeforces Card -->
+                <a href="https://codeforces.com/profile/jhimanish16" target="_blank" class="profile-card">
+                    <div class="profile-info">
+                        <i class="fa-solid fa-code"></i>
+                        <div>
+                            <h3>Codeforces</h3>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">@jhimanish16</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+
+                <!-- Call / WhatsApp Card -->
+                <a href="tel:+919041518622" class="profile-card">
+                    <div class="profile-info">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <h3>Call / WhatsApp</h3>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">+91 90415 18622</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+
+                <!-- Gmail Web Compose Card -->
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jhimanish16@gmail.com" target="_blank"
+                    class="profile-card">
+                    <div class="profile-info">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <h3>Email Me</h3>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">jhimanish16@gmail.com</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h3>Let's Connect!</h3>
+                <p>I am always open to discussing software engineering roles, competitive programming, and project
+                    collaborations.</p>
+
+                <div class="contact-details">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jhimanish16@gmail.com" target="_blank"
+                        class="contact-item">
+                        <i class="fa-solid fa-envelope"></i> jhimanish16@gmail.com
+                    </a>
+                    <a href="tel:+919041518622" class="contact-item">
+                        <i class="fa-solid fa-phone"></i> +91 90415 18622
+                    </a>
+                    <a href="https://www.linkedin.com/in/himanish-jindal-7967ab332" target="_blank"
+                        class="contact-item">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jhimanish16@gmail.com" target="_blank"
+                    class="btn btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Send Email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Himanish Jindal. IIIT Allahabad.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Animations -->
+    <script>
+        // Dynamic year setup
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Letter-by-Letter Typewriter Effect for Name
+        const nameText = "Himanish Jindal";
+        const typedTextSpan = document.querySelector(".typed-text");
+        const typingDelay = 100;
+        let charIndex = 0;
+
+        function type() {
+            if (charIndex < nameText.length) {
+                typedTextSpan.textContent += nameText.charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingDelay);
+            }
+        }
+
+        // Start animation on DOM load
+        document.addEventListener("DOMContentLoaded", function () {
+            if (nameText.length) setTimeout(type, 300);
+        });
+    </script>
+</body>
+
+</html>
